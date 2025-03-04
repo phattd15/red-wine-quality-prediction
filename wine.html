@@ -8338,45 +8338,6 @@ Name: quality, dtype: float64
 <li><strong>Number of Estimators</strong>: <code>50</code> (number of trees in the forest)</li>
 </ul>
 <p>This setup achieved a <strong>cross-validation accuracy of 87.5%</strong>, indicating strong generalization performance.</p>
-<h3 id="%F0%9F%93%8A-Classification-Report-(on-Test-Set)">📊 <strong>Classification Report (on Test Set)</strong><a class="anchor-link" href="#%F0%9F%93%8A-Classification-Report-(on-Test-Set)">¶</a></h3><table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Precision</th>
-<th>Recall</th>
-<th>F1-Score</th>
-<th>Support</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Good</strong></td>
-<td>0.63</td>
-<td>0.56</td>
-<td>0.59</td>
-<td>43</td>
-</tr>
-<tr>
-<td><strong>Middle</strong></td>
-<td>0.89</td>
-<td>0.95</td>
-<td>0.92</td>
-<td>264</td>
-</tr>
-<tr>
-<td><strong>Bad</strong></td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>13</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>Overall Accuracy</strong>: <strong>85.6%</strong></li>
-<li><strong>Macro Average F1-Score</strong>: <strong>0.50</strong> (average across all classes)</li>
-<li><strong>Weighted Average F1-Score</strong>: <strong>0.84</strong> (accounts for class imbalance)</li>
-</ul>
 <h3 id="%F0%9F%94%8D-Key-Observations">🔍 <strong>Key Observations</strong><a class="anchor-link" href="#%F0%9F%94%8D-Key-Observations">¶</a></h3><p>✔️ The model performs <strong>exceptionally well for the "Middle" quality wines</strong> with high precision (0.89) and recall (0.95).<br/>
 ✔️ <strong>"Bad" wines have moderate performance</strong>, but recall (0.56) suggests the model struggles to detect them correctly.<br/>
 ❌ <strong>"Good" wines are poorly classified</strong> (0.00 recall &amp; precision), likely due to class imbalance and fewer examples in the dataset.</p>
@@ -8385,7 +8346,6 @@ Name: quality, dtype: float64
 <li><strong>Increase the number of trees</strong>: Testing with higher values for <code>n_estimators</code> could enhance stability.</li>
 <li><strong>Feature engineering</strong>: Investigate feature importance and possibly create new features for better separation.</li>
 </ul>
-<p>Overall, <strong>Random Forest proves to be a strong contender with 85.6% accuracy</strong>, but improvements are needed to handle imbalanced classes effectively.</p>
 </div>
 </div>
 </div>
@@ -8488,48 +8448,8 @@ Random Forest Test Accuracy: 0.875
 <li>We used the <strong>default SGDClassifier</strong> without any regularization (<code>penalty=None</code>).</li>
 <li>The model was trained on the scaled dataset using <strong>X_train</strong> and evaluated on <strong>X_test</strong>.</li>
 </ul>
-<h3 id="%F0%9F%93%8A-Performance-Evaluation">📊 <strong>Performance Evaluation</strong><a class="anchor-link" href="#%F0%9F%93%8A-Performance-Evaluation">¶</a></h3><h4 id="Classification-Report-(on-Test-Set)"><strong>Classification Report (on Test Set)</strong><a class="anchor-link" href="#Classification-Report-(on-Test-Set)">¶</a></h4><table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Precision</th>
-<th>Recall</th>
-<th>F1-Score</th>
-<th>Support</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Bad</strong></td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>13</td>
-</tr>
-<tr>
-<td><strong>Good</strong></td>
-<td>0.25</td>
-<td>0.02</td>
-<td>0.04</td>
-<td>43</td>
-</tr>
-<tr>
-<td><strong>Middle</strong></td>
-<td>0.83</td>
-<td>0.99</td>
-<td>0.90</td>
-<td>264</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>Overall Accuracy</strong>: <strong>81.9%</strong></li>
-<li><strong>Macro Average F1-Score</strong>: <strong>0.31</strong> (average across all classes)</li>
-<li><strong>Weighted Average F1-Score</strong>: <strong>0.75</strong> (accounts for class imbalance)</li>
-</ul>
 <h3 id="%F0%9F%94%8D-Key-Observations">🔍 <strong>Key Observations</strong><a class="anchor-link" href="#%F0%9F%94%8D-Key-Observations">¶</a></h3><p>✔️ <strong>Middle-quality wines</strong> are classified well (<strong>99% recall</strong>), meaning the model is very good at identifying them.<br/>
-❌ <strong>Poor performance for "Bad" and "Good" wines</strong> (low precision and recall), indicating <strong>class imbalance issues</strong>.<br/>
-✔️ Despite class imbalance, the overall accuracy is <strong>81.9%</strong>, showing that <strong>SGD is effective but biased towards the majority class</strong>.</p>
+❌ <strong>Poor performance for "Bad" and "Good" wines</strong> (low precision and recall), indicating <strong>class imbalance issues</strong>.</p>
 <h3 id="%F0%9F%9A%80-Next-Steps">🚀 <strong>Next Steps</strong><a class="anchor-link" href="#%F0%9F%9A%80-Next-Steps">¶</a></h3><ul>
 <li>Implement techniques like <strong>class weighting</strong> or <strong>oversampling</strong> to improve performance on minority classes.</li>
 <li>Explore <strong>different regularization techniques (L1, L2, ElasticNet)</strong> for better generalization.</li>
@@ -8613,15 +8533,14 @@ SGD score 0.825
 <li><strong>Gamma</strong> = <code>0.5</code></li>
 <li><strong>Kernel</strong> = <code>rbf</code> (Radial Basis Function)</li>
 </ul>
-<p>This resulted in a <strong>cross-validation accuracy of 86.47%</strong>, indicating a strong ability to generalize.</p>
+<p>This resulted in a <strong>cross-validation accuracy of 82.49%</strong>, indicating a strong ability to generalize.</p>
 <h3 id="%F0%9F%93%8A-Performance-on-Test-Set">📊 <strong>Performance on Test Set</strong><a class="anchor-link" href="#%F0%9F%93%8A-Performance-on-Test-Set">¶</a></h3><p>The optimized SVC model was used for predictions on the test set. Below is a summary of its performance:</p>
 <ul>
-<li><strong>Best Accuracy (Cross-validation):</strong> <strong>86.47%</strong></li>
+<li><strong>Best Accuracy (Cross-validation):</strong> <strong>82.49%</strong></li>
 <li><strong>Best Hyperparameters:</strong> <code>{C: 1, gamma: 0.5, kernel: 'rbf'}</code></li>
 </ul>
 <h3 id="%F0%9F%94%8D-Key-Observations">🔍 <strong>Key Observations</strong><a class="anchor-link" href="#%F0%9F%94%8D-Key-Observations">¶</a></h3><p>✔️ The <strong>rbf kernel</strong> performed best, likely due to its flexibility in handling non-linear decision boundaries.<br/>
-✔️ A <strong>C value of 1</strong> strikes a balance between generalization and overfitting.<br/>
-✔️ The accuracy of <strong>86.47%</strong> is slightly lower than our <strong>Random Forest model (87.5%)</strong>, but SVM provides a more structured decision boundary.</p>
+✔️ A <strong>C value of 1</strong> strikes a balance between generalization and overfitting.</p>
 <h3 id="%F0%9F%9A%80-Next-Steps">🚀 <strong>Next Steps</strong><a class="anchor-link" href="#%F0%9F%9A%80-Next-Steps">¶</a></h3><ul>
 <li><strong>Further tune hyperparameters</strong>: Exploring larger values of <strong>C</strong> and different <strong>gamma</strong> settings could improve performance.</li>
 <li><strong>Feature selection</strong>: Analyzing which features contribute most to classification may refine the model.</li>
@@ -8853,7 +8772,6 @@ accuracy :  0.844408218503937
 <li><strong>Max Depth</strong> = <code>4</code></li>
 <li><strong>Splitter</strong> = <code>best</code></li>
 </ul>
-<p>This configuration yielded a <strong>cross-validation accuracy of 84.52%</strong>, making it a <strong>strong contender</strong> among the tested models.</p>
 <h3 id="%F0%9F%93%88-Performance-on-Test-Set">📈 <strong>Performance on Test Set</strong><a class="anchor-link" href="#%F0%9F%93%88-Performance-on-Test-Set">¶</a></h3><p>After training the <strong>best Decision Tree model</strong>, we evaluated its performance on the test data:</p>
 <ul>
 <li><strong>Decision Tree Test Accuracy</strong> = <strong>83.1%</strong></li>
